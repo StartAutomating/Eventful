@@ -1,7 +1,7 @@
 @{
     RootModule = 'Eventful.psm1'
     Description = 'Easy Eventful Asynchronous Scripting with PowerShell'
-    ModuleVersion = '0.1.3'
+    ModuleVersion = '0.1.4'
     GUID = 'f4d780da-be78-49c6-921a-436e053cb97c'
     Author = 'James Brundage'
     Copyright = '2021 Start-Automating'
@@ -16,7 +16,12 @@
             Tags = 'Eventful', 'Events'
 
             ReleaseNotes = @'
-0.1.3:
+0.1.4
+---
+* Module Rebranded to Eventful.
+* Get-EventHandler added
+
+0.1.3
 ---
 New Event Source:
 * VariableSet
