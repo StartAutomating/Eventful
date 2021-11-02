@@ -73,7 +73,7 @@
     }
     process {
         #region Passthru Events
-        if ($PSCmdlet.ParameterSetName -eq 'EventIdentifier' -and 
+        if ($PSCmdlet.ParameterSetName -eq 'EventIdentifier' -and
             $_ -is [Management.Automation.PSEventArgs]) {
             $_ | accumulate # pass events thru and accumulate them for later.
             return
@@ -86,7 +86,7 @@
                 if ($SourceIdentifier) {
                     foreach ($sid in $sourceIdentifier) {
                         if ($evt.SourceIdentifier -eq $sid -or $evt.SourceIdentifier -like $sid) {
-                            $evt | accumulate                        
+                            $evt | accumulate
                         }
                         if ($First -and $accumulated.Count -ge ($First + $Skip)) {
                             break nextEvent

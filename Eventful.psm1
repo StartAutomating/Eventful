@@ -8,7 +8,7 @@ Set-Alias -Name Send -Value Send-Event
 Set-Alias -Name Receive -Value Receive-Event
 
 
-$eventSources = Get-EventSource 
+$eventSources = Get-EventSource
 
 foreach ($es in $eventSources) {
     Set-Alias "On@$($es.Name -replace '^@' -replace '\.ps1$')" -Value Watch-Event

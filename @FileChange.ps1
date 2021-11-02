@@ -4,7 +4,7 @@
 .Description
     Uses the [IO.FileSystemWatcher] to watch for changes to files.
 
-    Because some applications and frameworks write to files differently, 
+    Because some applications and frameworks write to files differently,
     you may see more than one event for a given change.
 #>
 param(
@@ -45,7 +45,7 @@ process {
     }
 
     if ([IO.File]::Exists("$resolvedFilePath")) { # If we're passed a path to a specific file
-        $fileInfo = ([IO.FileInfo]"$resolvedFilePath")   
+        $fileInfo = ([IO.FileInfo]"$resolvedFilePath")
         $filePath = $fileInfo.Directory.FullName  # we need to watch the directory
         $FileFilter = $fileInfo.Name              # and then filter based off of the file name.
     } elseif ([IO.Directory]::Exists("$resolvedFilePath")) {
@@ -65,6 +65,6 @@ process {
         $combinedNotifyFilter = $combinedNotifyFilter -bor $n
     }
     $fileSystemWatcher.NotifyFilter = $combinedNotifyFilter
-    $fileSystemWatcher | 
+    $fileSystemWatcher |
         Add-Member NoteProperty EventName $EventName -Force -PassThru
 }

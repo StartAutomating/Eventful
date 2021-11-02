@@ -69,7 +69,7 @@
         #endregion Map New-Event Parameters
 
         #region Send Each Event
-        foreach ($sourceID in $SourceIdentifier) { # Walk over each source identifier 
+        foreach ($sourceID in $SourceIdentifier) { # Walk over each source identifier
             # and call New-Event.
             $evt = New-Event @newEventParams -SourceIdentifier $sourceID
             if ($PassThru) { # If we want to -PassThru events

@@ -87,7 +87,7 @@
                     $loadedModule.PrivateData.($myInv.MyCommand.Module.Name)
                 ) {
                     # Determine the root of the module with private data.
-                    $thisModuleRoot = [IO.Path]::GetDirectoryName($loadedModule.Path) 
+                    $thisModuleRoot = [IO.Path]::GetDirectoryName($loadedModule.Path)
                     # and get the extension data
                     $extensionData = $loadedModule.PrivateData.($myInv.MyCommand.Module.Name)
                     if ($extensionData -is [Hashtable]) { # If it was a hashtable
