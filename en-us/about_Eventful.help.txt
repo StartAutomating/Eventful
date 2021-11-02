@@ -1,24 +1,7 @@
-﻿
-OnQ [0.1]
-=========
-
-Easy Asynchronous Event-Driven Scripting with PowerShell
----------
-
-### Commands
-----------------------
-|   Verb|Noun        |
-|------:|:-----------|
-|  Clear|-EventSource|
-|    Get|-EventSource|
-|Receive|-Event      |
-|   Send|-Event      |
-|  Watch|-Event      |
-----------------------
-### Getting Started with OnQ
+﻿### Getting Started with Eventful
 
 
-OnQ is a PowerShell module that helps you use events to script asynchronously.
+Eventful is a PowerShell module that helps you use events to script asynchronously.
 
 It gives you an easy syntax to describe events handlers in PowerShell, and provides a platform to build custom event sources.
 
@@ -35,16 +18,16 @@ on delay "00:05:00" { "Five more minutes!" | Out-Host}
 
 These example use the built-in event source script 'Delay'.
 
-OnQ gives you a way to write scripts that will produce events.  These are event sources.
+Eventful gives you a way to write scripts that will produce events.  These are event sources.
 
-OnQ ships with several event sources.  To see what event sources are available to you, run:
+Eventful ships with several event sources.  To see what event sources are available to you, run:
 
 ~~~PowerShell
 Get-EventSource  # See event sources
 ~~~
 
 
-Each event source discovered when OnQ loads creates a smart alias that makes it easier to discover parameters, for example:
+Each event source discovered when Eventful loads creates a smart alias that makes it easier to discover parameters, for example:
 
 ~~~PowerShell
 # Run in 30 seconds
@@ -62,7 +45,7 @@ On@FileChange { "Files Changed:$($event.SenderEventArgs)" | Out-Host }
 ~~~
 
 
-OnQ also allows you to handle an arbitrary signal.
+Eventful also allows you to handle an arbitrary signal.
 In the example below, we set up a handler for "MySignal", and the use the alias send to Send-Event(s).
 
 ~~~PowerShell
@@ -75,6 +58,3 @@ On MySignal {"Fire $($event.MessageData)!" | Out-Host }
 ---
 
 [Understanding Event Sources](Understanding_Event_Sources.md)
-
-
-
