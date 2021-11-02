@@ -1,21 +1,4 @@
-﻿Eventful [0.1.4]
-================
-
-Easy Eventful Asynchronous Scripting with PowerShell
-----------------
-
-### Commands
------------------------
-|   Verb|Noun         |
-|------:|:------------|
-|  Clear|-EventSource |
-|    Get|-EventHandler|
-|       |-EventSource |
-|Receive|-Event       |
-|   Send|-Event       |
-|  Watch|-Event       |
------------------------
-### Getting Started with Eventful
+﻿### Getting Started with Eventful
 
 
 Eventful is a PowerShell module that helps you use events to script asynchronously.

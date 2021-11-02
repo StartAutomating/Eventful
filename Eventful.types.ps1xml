@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<!-- Generated with EZOut 1.8.5: Install-Module EZOut or https://github.com/StartAutomating/EZOut -->
+<Types>
+  <Type>
+    <Name>Eventful.EventHandler</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Description</Name>
+        <GetScriptBlock>
+                        # From ?&lt;PowerShell_HelpField&gt; in Irregular (https://github.com/StartAutomating/Irregular)
+[Regex]::new(@'
+\.(?&lt;Field&gt;Description)              # Field Start
+\s{0,}                               # Optional Whitespace
+(?&lt;Content&gt;(.|\s)+?(?=(\.\w+|\#\&gt;))) # Anything until the next .\field or end of the comment block
+'@, 'IgnoreCase,IgnorePatternWhitespace', [Timespan]::FromSeconds(1)).Match(
+$this.ScriptBlock
+).Groups["Content"].Value
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Help</Name>
+        <GetScriptBlock>
+                        Get-Help $this.EventSourceId
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>IsSpecificEvent</Name>
+        <GetScriptBlock>
+                        if ($this.Name -match '\.(events|handlers).ps1$') {
+    $false
+} else {
+    $true
+}
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Name</Name>
+        <GetScriptBlock>
+                        $realName = $this.GetType().GetProperty("Name").GetGetMethod().Invoke($this, 'Instance,Public', $null, $null, $null)
+if ($realName -match '\.(events|handlers).ps1$') {
+    $realName -replace '\.(events|handlers).ps1$'
+} else {
+    $realName -replace '^On_' -replace '\.handler' -replace '\.ps1$'
+}
+
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>SourceIdentifier</Name>
+        <GetScriptBlock>
+                        if ($this.Name -match '\.(events|handlers).ps1$') {
+    ''
+} else {
+    $this.Name -replace '^On_' -replace '\.handler' -replace '\.ps1$'
+}
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Synopsis</Name>
+        <GetScriptBlock>
+                        # From ?&lt;PowerShell_HelpField&gt; in Irregular (https://github.com/StartAutomating/Irregular)
+[Regex]::new(@'
+\.(?&lt;Field&gt;Synopsis)                   # Field Start
+\s{0,}                               # Optional Whitespace
+(?&lt;Content&gt;(.|\s)+?(?=(\.\w+|\#\&gt;))) # Anything until the next .\field or end of the comment block
+'@, 'IgnoreCase,IgnorePatternWhitespace', [Timespan]::FromSeconds(1)).Match(
+$this.ScriptBlock
+).Groups["Content"].Value
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+  <Type>
+    <Name>Eventful.EventSource</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>Description</Name>
+        <GetScriptBlock>
+                        # From ?&lt;PowerShell_HelpField&gt; in Irregular (https://github.com/StartAutomating/Irregular)
+[Regex]::new(@'
+\.(?&lt;Field&gt;Description)              # Field Start
+\s{0,}                               # Optional Whitespace
+(?&lt;Content&gt;(.|\s)+?(?=(\.\w+|\#\&gt;))) # Anything until the next .\field or end of the comment block
+'@, 'IgnoreCase,IgnorePatternWhitespace', [Timespan]::FromSeconds(1)).Match(
+$this.ScriptBlock
+).Groups["Content"].Value
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>EventSourceID</Name>
+        <GetScriptBlock>
+                        if ($this -is [Management.Automation.ExternalScriptInfo]) {
+    $this.Path # the key is the path.
+} elseif ($this.Module) { # If it was from a module
+    $this.Module + '\' + $this.Name # it's the module qualified name.
+} else {
+    $this.Name # Otherwise, it's just the function name.
+}
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Help</Name>
+        <GetScriptBlock>
+                        Get-Help $this.EventSourceId
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>Synopsis</Name>
+        <GetScriptBlock>
+                        # From ?&lt;PowerShell_HelpField&gt; in Irregular (https://github.com/StartAutomating/Irregular)
+[Regex]::new(@'
+\.(?&lt;Field&gt;Synopsis)                   # Field Start
+\s{0,}                               # Optional Whitespace
+(?&lt;Content&gt;(.|\s)+?(?=(\.\w+|\#\&gt;))) # Anything until the next .\field or end of the comment block
+'@, 'IgnoreCase,IgnorePatternWhitespace', [Timespan]::FromSeconds(1)).Match(
+$this.ScriptBlock
+).Groups["Content"].Value
+
+                    </GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
