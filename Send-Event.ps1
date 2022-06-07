@@ -36,6 +36,7 @@
 
     # The event arguments.
     [Parameter(ValueFromPipelineByPropertyName,Position=3)]
+    [Alias('SourceEventArgs')]
     [PSObject]
     $EventArgs,
 
