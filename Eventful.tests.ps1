@@ -4,7 +4,7 @@
     Justification="Global variables are the simplest way to test event updates.")]
 param()
 
-describe OnQ {
+describe Eventful {
     it 'Helps create events' {
         $global:WaitAHalfSecond = $false
         On@Delay -Wait "00:00:00.5" -Then { $global:WaitAHalfSecond = $true; "Waited half second" }
