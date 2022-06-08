@@ -12,6 +12,7 @@ if ($EventfulLoaded) {
 }
 
 Save-MarkdownHelp -Module Eventful -OutputPath $wikiPath -ScriptPath '@*' -ReplaceScriptName '^@', 
-    '\.ps1$' -ReplaceScriptNameWith '',"-EventSource" -SkipCommandType Alias
+    '\.ps1$' -ReplaceScriptNameWith '',"-EventSource" -SkipCommandType Alias -PassThru |
+    Add-Member CommitMessage ScriptProperty { "Updating $($this.Name) [skip ci]" } -Force -PassThru
 
 Pop-Location
