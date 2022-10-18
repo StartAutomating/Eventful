@@ -22,9 +22,16 @@ The Uniform Resource Identifier.
 
 
 
-|Type       |Requried|Postion|PipelineInput        |
-|-----------|--------|-------|---------------------|
-|```[Uri]```|true    |1      |true (ByPropertyName)|
+> **Type**: ```[Uri]```
+
+> **Required**: true
+
+> **Position**: 1
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **Method**
 
@@ -43,9 +50,19 @@ Valid Values:
 * Options
 * Merge
 * Patch
-|Type          |Requried|Postion|PipelineInput        |
-|--------------|--------|-------|---------------------|
-|```[String]```|false   |2      |true (ByPropertyName)|
+
+
+
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: 2
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **Header**
 
@@ -53,9 +70,16 @@ A collection of headers to send with the request.
 
 
 
-|Type               |Requried|Postion|PipelineInput        |
-|-------------------|--------|-------|---------------------|
-|```[IDictionary]```|false   |3      |true (ByPropertyName)|
+> **Type**: ```[IDictionary]```
+
+> **Required**: false
+
+> **Position**: 3
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **Body**
 
@@ -63,9 +87,16 @@ The request body.
 
 
 
-|Type            |Requried|Postion|PipelineInput        |
-|----------------|--------|-------|---------------------|
-|```[PSObject]```|false   |4      |true (ByPropertyName)|
+> **Type**: ```[PSObject]```
+
+> **Required**: false
+
+> **Position**: 4
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **PollingInterval**
 
@@ -74,20 +105,35 @@ This is the minimum amount of time until you will be notified of the success or 
 
 
 
-|Type            |Requried|Postion|PipelineInput        |
-|----------------|--------|-------|---------------------|
-|```[TimeSpan]```|false   |4      |true (ByPropertyName)|
+> **Type**: ```[TimeSpan]```
+
+> **Required**: false
+
+> **Position**: 4
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **TransferEncoding**
 
-|Type            |Requried|Postion|PipelineInput|
-|----------------|--------|-------|-------------|
-|```[Encoding]```|false   |named  |false        |
+> **Type**: ```[Encoding]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:false
+
+
+
 ---
 ### Syntax
 ```PowerShell
 EventSources/@HttpResponse.ps1 [-Uri] <Uri> [[-Method] <String>] [[-Header] <IDictionary>] [[-Body] <PSObject>] [[-PollingInterval] <TimeSpan>] [-TransferEncoding <Encoding>] [<CommonParameters>]
 ```
 ---
+
 
 
