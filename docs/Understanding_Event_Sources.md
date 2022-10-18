@@ -1,4 +1,4 @@
-﻿Understanding Event Sources
+Understanding Event Sources
 ---------------------------
 Event Sources are scripts that produce events.
 
