@@ -21,14 +21,22 @@ The name of the variable
 
 
 
-|Type          |Requried|Postion|PipelineInput        |
-|--------------|--------|-------|---------------------|
-|```[String]```|true    |1      |true (ByPropertyName)|
+> **Type**: ```[String]```
+
+> **Required**: true
+
+> **Position**: 1
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 ### Syntax
 ```PowerShell
 EventSources/@VariableSet.ps1 [-VariableName] <String> [<CommonParameters>]
 ```
 ---
+
 
 
