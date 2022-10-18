@@ -23,9 +23,16 @@ The process identifier
 
 
 
-|Type         |Requried|Postion|PipelineInput        |
-|-------------|--------|-------|---------------------|
-|```[Int32]```|true    |1      |true (ByPropertyName)|
+> **Type**: ```[Int32]```
+
+> **Required**: true
+
+> **Position**: 1
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **Exit**
 
@@ -33,9 +40,16 @@ If set, will watch for process exit.  This is the default unless -StandardError 
 
 
 
-|Type          |Requried|Postion|PipelineInput|
-|--------------|--------|-------|-------------|
-|```[Switch]```|false   |named  |false        |
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:false
+
+
+
 ---
 #### **StandardOutput**
 
@@ -43,9 +57,16 @@ If set, will watch for new standard output.
 
 
 
-|Type          |Requried|Postion|PipelineInput|
-|--------------|--------|-------|-------------|
-|```[Switch]```|false   |named  |false        |
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:false
+
+
+
 ---
 #### **StandardError**
 
@@ -53,14 +74,22 @@ If set, will watch for new standard erorr.
 
 
 
-|Type          |Requried|Postion|PipelineInput|
-|--------------|--------|-------|-------------|
-|```[Switch]```|false   |named  |false        |
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:false
+
+
+
 ---
 ### Syntax
 ```PowerShell
 EventSources/@Process.ps1 [-ProcessID] <Int32> [-Exit] [-StandardOutput] [-StandardError] [<CommonParameters>]
 ```
 ---
+
 
 
