@@ -20,14 +20,22 @@ On Time "5:00 PM" { "EOD!" | Out-Host }
 ### Parameters
 #### **DateTime**
 
-|Type            |Requried|Postion|PipelineInput|
-|----------------|--------|-------|-------------|
-|```[DateTime]```|true    |1      |false        |
+> **Type**: ```[DateTime]```
+
+> **Required**: true
+
+> **Position**: 1
+
+> **PipelineInput**:false
+
+
+
 ---
 ### Syntax
 ```PowerShell
 @Time.ps1 [-DateTime] <DateTime> [<CommonParameters>]
 ```
 ---
+
 
 
