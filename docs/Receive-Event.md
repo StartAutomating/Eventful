@@ -12,7 +12,13 @@ Receives Events and output from Event Subscriptions.
 ---
 ### Related Links
 * [Send-Event](Send-Event.md)
+
+
+
 * [Watch-Event](Watch-Event.md)
+
+
+
 ---
 ### Examples
 #### EXAMPLE 1
@@ -33,9 +39,16 @@ The event subscription ID.
 
 
 
-|Type           |Requried|Postion|PipelineInput        |
-|---------------|--------|-------|---------------------|
-|```[Int32[]]```|true    |named  |true (ByPropertyName)|
+> **Type**: ```[Int32[]]```
+
+> **Required**: true
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **EventIdentifier**
 
@@ -43,9 +56,16 @@ The event ID.
 
 
 
-|Type           |Requried|Postion|PipelineInput        |
-|---------------|--------|-------|---------------------|
-|```[Int32[]]```|true    |named  |true (ByPropertyName)|
+> **Type**: ```[Int32[]]```
+
+> **Required**: true
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **SourceIdentifier**
 
@@ -53,9 +73,16 @@ The event source identifier.
 
 
 
-|Type            |Requried|Postion|PipelineInput        |
-|----------------|--------|-------|---------------------|
-|```[String[]]```|false   |named  |true (ByPropertyName)|
+> **Type**: ```[String[]]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **First**
 
@@ -63,9 +90,16 @@ If provided, will return the first N events
 
 
 
-|Type         |Requried|Postion|PipelineInput|
-|-------------|--------|-------|-------------|
-|```[Int32]```|false   |named  |false        |
+> **Type**: ```[Int32]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:false
+
+
+
 ---
 #### **Skip**
 
@@ -73,9 +107,16 @@ If provided, will skip the first N events.
 
 
 
-|Type         |Requried|Postion|PipelineInput|
-|-------------|--------|-------|-------------|
-|```[Int32]```|false   |named  |false        |
+> **Type**: ```[Int32]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:false
+
+
+
 ---
 #### **InputObject**
 
@@ -84,9 +125,16 @@ If the Input Object was a job, it will receive the results of the job.
 
 
 
-|Type            |Requried|Postion|PipelineInput |
-|----------------|--------|-------|--------------|
-|```[PSObject]```|false   |named  |true (ByValue)|
+> **Type**: ```[PSObject]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:true (ByValue)
+
+
+
 ---
 #### **Clear**
 
@@ -95,15 +143,24 @@ and will not keep results from Jobs or Event Handlers.
 
 
 
-|Type          |Requried|Postion|PipelineInput|
-|--------------|--------|-------|-------------|
-|```[Switch]```|false   |named  |false        |
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:false
+
+
+
 ---
 ### Outputs
-System.Management.Automation.PSObject
+* [Management.Automation.PSObject](https://learn.microsoft.com/en-us/dotnet/api/System.Management.Automation.PSObject)
 
 
-System.Management.Automation.PSEventArgs
+* [Management.Automation.PSEventArgs](https://learn.microsoft.com/en-us/dotnet/api/System.Management.Automation.PSEventArgs)
+
+
 
 
 ---
