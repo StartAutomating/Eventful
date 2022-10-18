@@ -24,14 +24,22 @@ The frequency to check for a module load.
 
 
 
-|Type            |Requried|Postion|PipelineInput|
-|----------------|--------|-------|-------------|
-|```[TimeSpan]```|false   |1      |false        |
+> **Type**: ```[TimeSpan]```
+
+> **Required**: false
+
+> **Position**: 1
+
+> **PipelineInput**:false
+
+
+
 ---
 ### Syntax
 ```PowerShell
 EventSources/@ModuleChanged.ps1 [[-PollingInterval] <TimeSpan>] [<CommonParameters>]
 ```
 ---
+
 
 
