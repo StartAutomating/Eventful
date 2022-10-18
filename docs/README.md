@@ -1,4 +1,4 @@
-﻿### Getting Started with Eventful
+### Getting Started with Eventful
 
 
 Eventful is a PowerShell module that helps you use events to script asynchronously.
