@@ -19,6 +19,9 @@ Event sources can be implemented in:
 ---
 ### Related Links
 * [Watch-Event](Watch-Event.md)
+
+
+
 ---
 ### Examples
 #### EXAMPLE 1
@@ -39,9 +42,16 @@ The name of the event source.
 
 
 
-|Type            |Requried|Postion|PipelineInput        |
-|----------------|--------|-------|---------------------|
-|```[String[]]```|false   |1      |true (ByPropertyName)|
+> **Type**: ```[String[]]```
+
+> **Required**: false
+
+> **Position**: 1
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **Subscription**
 
@@ -49,9 +59,16 @@ If set, will get subscriptions related to event sources.
 
 
 
-|Type          |Requried|Postion|PipelineInput        |
-|--------------|--------|-------|---------------------|
-|```[Switch]```|false   |named  |true (ByPropertyName)|
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **SourceObject**
 
@@ -59,9 +76,16 @@ If set, will get source objects from the subscriptions related to event sources.
 
 
 
-|Type          |Requried|Postion|PipelineInput        |
-|--------------|--------|-------|---------------------|
-|```[Switch]```|false   |named  |true (ByPropertyName)|
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **Help**
 
@@ -69,21 +93,30 @@ If set, will get full help for each event source.
 
 
 
-|Type          |Requried|Postion|PipelineInput        |
-|--------------|--------|-------|---------------------|
-|```[Switch]```|false   |named  |true (ByPropertyName)|
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 ### Outputs
-Eventful.EventSource
+* Eventful.EventSource
 
 
-System.Management.Automation.CommandInfo
+* [Management.Automation.CommandInfo](https://learn.microsoft.com/en-us/dotnet/api/System.Management.Automation.CommandInfo)
 
 
-System.Management.Automation.PSEventSubscriber
+* [Management.Automation.PSEventSubscriber](https://learn.microsoft.com/en-us/dotnet/api/System.Management.Automation.PSEventSubscriber)
 
 
-psobject
+* [Management.Automation.PSObject](https://learn.microsoft.com/en-us/dotnet/api/System.Management.Automation.PSObject)
+
+
 
 
 ---
