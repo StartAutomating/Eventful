@@ -4,17 +4,6 @@
 Easy Eventful Asynchronous Scripting with PowerShell
 ----------------
 
-### Commands
------------------------
-|   Verb|Noun         |
-|------:|:------------|
-|  Clear|-EventSource |
-|    Get|-EventHandler|
-|       |-EventSource |
-|Receive|-Event       |
-|   Send|-Event       |
-|  Watch|-Event       |
------------------------
 ### Getting Started with Eventful
 
 
