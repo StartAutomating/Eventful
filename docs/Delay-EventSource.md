@@ -24,14 +24,22 @@ The amount of time to wait
 
 
 
-|Type            |Requried|Postion|PipelineInput        |
-|----------------|--------|-------|---------------------|
-|```[TimeSpan]```|true    |1      |true (ByPropertyName)|
+> **Type**: ```[TimeSpan]```
+
+> **Required**: true
+
+> **Position**: 1
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 ### Syntax
 ```PowerShell
 @Delay.ps1 [-Wait] <TimeSpan> [<CommonParameters>]
 ```
 ---
+
 
 

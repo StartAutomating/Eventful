@@ -17,7 +17,13 @@ Send-Event is a wrapper for the built-in command New-Event with a few key differ
 ---
 ### Related Links
 * [New-Event](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/New-Event)
+
+
+
 * [Watch-Event](Watch-Event.md)
+
+
+
 ---
 ### Examples
 #### EXAMPLE 1
@@ -33,9 +39,16 @@ The SourceIdentifier
 
 
 
-|Type            |Requried|Postion|PipelineInput|
-|----------------|--------|-------|-------------|
-|```[String[]]```|true    |1      |false        |
+> **Type**: ```[String[]]```
+
+> **Required**: true
+
+> **Position**: 1
+
+> **PipelineInput**:false
+
+
+
 ---
 #### **MessageData**
 
@@ -43,9 +56,16 @@ The message data
 
 
 
-|Type            |Requried|Postion|PipelineInput |
-|----------------|--------|-------|--------------|
-|```[PSObject]```|false   |2      |true (ByValue)|
+> **Type**: ```[PSObject]```
+
+> **Required**: false
+
+> **Position**: 2
+
+> **PipelineInput**:true (ByValue)
+
+
+
 ---
 #### **Sender**
 
@@ -53,9 +73,16 @@ The sender.
 
 
 
-|Type            |Requried|Postion|PipelineInput        |
-|----------------|--------|-------|---------------------|
-|```[PSObject]```|false   |3      |true (ByPropertyName)|
+> **Type**: ```[PSObject]```
+
+> **Required**: false
+
+> **Position**: 3
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **EventArgs**
 
@@ -63,9 +90,16 @@ The event arguments.
 
 
 
-|Type            |Requried|Postion|PipelineInput        |
-|----------------|--------|-------|---------------------|
-|```[PSObject]```|false   |4      |true (ByPropertyName)|
+> **Type**: ```[PSObject]```
+
+> **Required**: false
+
+> **Position**: 4
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **PassThru**
 
@@ -73,15 +107,24 @@ If set, will output the created event.
 
 
 
-|Type          |Requried|Postion|PipelineInput        |
-|--------------|--------|-------|---------------------|
-|```[Switch]```|false   |named  |true (ByPropertyName)|
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 ### Outputs
-System.Nullable
+* [Nullable](https://learn.microsoft.com/en-us/dotnet/api/System.Nullable)
 
 
-System.Management.Automation.PSEventArgs
+* [Management.Automation.PSEventArgs](https://learn.microsoft.com/en-us/dotnet/api/System.Management.Automation.PSEventArgs)
+
+
 
 
 ---

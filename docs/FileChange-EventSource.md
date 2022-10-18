@@ -20,9 +20,16 @@ The path to the file or directory
 
 
 
-|Type          |Requried|Postion|PipelineInput        |
-|--------------|--------|-------|---------------------|
-|```[String]```|false   |1      |true (ByPropertyName)|
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: 1
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **FileFilter**
 
@@ -30,9 +37,16 @@ A wildcard filter describing the names of files to watch
 
 
 
-|Type          |Requried|Postion|PipelineInput        |
-|--------------|--------|-------|---------------------|
-|```[String]```|false   |2      |true (ByPropertyName)|
+> **Type**: ```[String]```
+
+> **Required**: false
+
+> **Position**: 2
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **NotifyFilter**
 
@@ -50,9 +64,19 @@ Valid Values:
 * LastAccess
 * CreationTime
 * Security
-|Type                   |Requried|Postion|PipelineInput        |
-|-----------------------|--------|-------|---------------------|
-|```[NotifyFilters[]]```|false   |3      |true (ByPropertyName)|
+
+
+
+> **Type**: ```[NotifyFilters[]]```
+
+> **Required**: false
+
+> **Position**: 3
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **Recurse**
 
@@ -60,9 +84,16 @@ If set, will include subdirectories in the watcher.
 
 
 
-|Type          |Requried|Postion|PipelineInput|
-|--------------|--------|-------|-------------|
-|```[Switch]```|false   |named  |false        |
+> **Type**: ```[Switch]```
+
+> **Required**: false
+
+> **Position**: named
+
+> **PipelineInput**:false
+
+
+
 ---
 #### **EventName**
 
@@ -77,14 +108,25 @@ Valid Values:
 * Created
 * Deleted
 * Renamed
-|Type            |Requried|Postion|PipelineInput|
-|----------------|--------|-------|-------------|
-|```[String[]]```|false   |4      |false        |
+
+
+
+> **Type**: ```[String[]]```
+
+> **Required**: false
+
+> **Position**: 4
+
+> **PipelineInput**:false
+
+
+
 ---
 ### Syntax
 ```PowerShell
 @FileChange.ps1 [[-FilePath] <String>] [[-FileFilter] <String>] [[-NotifyFilter] {FileName | DirectoryName | Attributes | Size | LastWrite | LastAccess | CreationTime | Security}] [-Recurse] [[-EventName] <String[]>] [<CommonParameters>]
 ```
 ---
+
 
 
