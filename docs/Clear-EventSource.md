@@ -12,6 +12,9 @@ Clears any active subscriptions for any event source.
 ---
 ### Related Links
 * [Get-EventSource](Get-EventSource.md)
+
+
+
 ---
 ### Examples
 #### EXAMPLE 1
@@ -27,9 +30,16 @@ The name of the event source.
 
 
 
-|Type            |Requried|Postion|PipelineInput        |
-|----------------|--------|-------|---------------------|
-|```[String[]]```|false   |1      |true (ByPropertyName)|
+> **Type**: ```[String[]]```
+
+> **Required**: false
+
+> **Position**: 1
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 #### **WhatIf**
 -WhatIf is an automatic variable that is created when a command has ```[CmdletBinding(SupportsShouldProcess)]```.
@@ -45,7 +55,9 @@ If the command sets a ```[ConfirmImpact("Medium")]``` which is lower than ```$co
 
 ---
 ### Outputs
-System.Nullable
+* [Nullable](https://learn.microsoft.com/en-us/dotnet/api/System.Nullable)
+
+
 
 
 ---
