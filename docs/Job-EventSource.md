@@ -15,14 +15,22 @@ This will send an event when a job finishes.
 ### Parameters
 #### **JobID**
 
-|Type         |Requried|Postion|PipelineInput        |
-|-------------|--------|-------|---------------------|
-|```[Int32]```|true    |1      |true (ByPropertyName)|
+> **Type**: ```[Int32]```
+
+> **Required**: true
+
+> **Position**: 1
+
+> **PipelineInput**:true (ByPropertyName)
+
+
+
 ---
 ### Syntax
 ```PowerShell
 EventSources/@Job.ps1 [-JobID] <Int32> [<CommonParameters>]
 ```
 ---
+
 
 
