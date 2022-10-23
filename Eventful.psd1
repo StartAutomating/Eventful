@@ -83,10 +83,18 @@ Better pipelining support for Sending events.
         }
 
 
-        Eventful = @{            
+        Eventful = @{
             'Time' = '@Time.ps1'
             'Delay' = '@Delay.ps1'
-            'Process' = 'EventSources/@Process.ps1'            
+            'Process' = 'EventSources/@Process.ps1'
+            'ModuleChanged' = 'EventSources/@ModuleChanged.ps1'
+            'Job' = 'EventSources/@Job.ps1'
+            'PowerShellAsync' = 'EventSources/@PowerShellAsync.ps1'
+            'HttpResponse' = 'EventSources/@HttpResponse.ps1'
+            'VariableSet' = 'EventSources/@VariableSet.ps1'
+            'UDP' = 'EventSources/@UDP.ps1'
+            'Event' = 'EventSources/@Event.ps1'
+            'LocationChanged' = 'EventSources/@LocationChanged.ps1'
         }
     }
 }
