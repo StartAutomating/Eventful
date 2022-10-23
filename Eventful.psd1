@@ -1,7 +1,7 @@
 @{
     RootModule = 'Eventful.psm1'
     Description = 'Easy Eventful Asynchronous Scripting with PowerShell'
-    ModuleVersion = '0.1.6'
+    ModuleVersion = '0.1.7'
     GUID = 'f4d780da-be78-49c6-921a-436e053cb97c'
     Author = 'James Brundage'
     Copyright = '2021 Start-Automating'
@@ -16,6 +16,12 @@
             Tags = 'Eventful', 'Events'
 
             ReleaseNotes = @'
+## 0.1.7
+* Adding On@CommandNotFound event source (Fixes #11)
+* Watch-Event now allows eventsources -recursively (Fixes #15)
+
+---
+
 ## 0.1.6
 * Adding LocationChanged event source (Fixes #12)
 
@@ -77,18 +83,10 @@ Better pipelining support for Sending events.
         }
 
 
-        Eventful = @{
+        Eventful = @{            
             'Time' = '@Time.ps1'
             'Delay' = '@Delay.ps1'
-            'Process' = 'EventSources/@Process.ps1'
-            'ModuleChanged' = 'EventSources/@ModuleChanged.ps1'
-            'Job' = 'EventSources/@Job.ps1'
-            'PowerShellAsync' = 'EventSources/@PowerShellAsync.ps1'
-            'HttpResponse' = 'EventSources/@HttpResponse.ps1'
-            'VariableSet' = 'EventSources/@VariableSet.ps1'
-            'UDP' = 'EventSources/@UDP.ps1'
-            'Event' = 'EventSources/@Event.ps1'
-            'LocationChanged' = 'EventSources/@LocationChanged.ps1'
+            'Process' = 'EventSources/@Process.ps1'            
         }
     }
 }
