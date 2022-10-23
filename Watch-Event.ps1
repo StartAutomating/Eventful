@@ -124,14 +124,12 @@
                     # The next possibility is an @.ps1 script.
                     $atFile = "@$($invocationName).ps1"
                     # This could be in a few places: the current directory first,
-                    $localCmd = $getCmd.invoke(
-                        (Get-ChildItem -LiteralPath $pwd -Filter $atFile).FullName, 'ExternalScript')
-                    if ($localCmd) { return $localCmd }
-                    # then the directory this script is located in,
-                    $myRoot =  $myInv.MyCommand.ScriptBlock.File | Split-Path -ErrorAction SilentlyContinue
-                    $atRootCmd = $getCmd.invoke(
-                        (Get-ChildItem -LiteralPath $myRoot -Filter $atFile).FullName, 'ExternalScript')
-                    if ($atRootCmd) {return $atRootCmd}
+                    foreach ($foundFile in ($pwd, $myRoot | 
+                        Get-ChildItem -Recurse -Filter $atFile)) {
+                            
+                        $foundCmd = $getCmd.Invoke($foundFile.FullName, 'ExternalScript')
+                        if ($foundCmd) { return $foundCmd}
+                    }
 
                     if ($myInv.MyCommand.Module) { # then the module root
                         $MyModuleRoot = $myInv.MyCommand.Module | Split-Path -ErrorAction SilentlyContinue
@@ -475,7 +473,7 @@ $then
                 if ($eventSource -is [Management.Automation.ExternalScriptInfo]) {
                     $eventSource.Path # the key is the path.
                 } elseif ($eventSource.Module) { # If it was from a module
-                    $eventSource.Module + '\' + $eventSource.Name # it's the module qualified name.
+                    $eventSource.Module.ToString() + '\' + $eventSource.Name # it's the module qualified name.
                 } else {
                     $eventSource.Name # Otherwise, it's just the function name.
                 }
