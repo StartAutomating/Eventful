@@ -1,5 +1,6 @@
-﻿Eventful [0.1.4]
-================
+﻿<div align='center'>
+<img src='Assets/Eventful.svg' />
+</div>
 
 Easy Eventful Asynchronous Scripting with PowerShell
 ----------------

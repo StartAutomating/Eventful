@@ -1,3 +1,9 @@
+## 0.1.7
+* Adding On@CommandNotFound event source (Fixes #11)
+* Watch-Event now allows eventsources -recursively (Fixes #15)
+
+---
+
 ## 0.1.6
 * Adding LocationChanged event source (Fixes #12)
 
