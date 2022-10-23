@@ -3,8 +3,8 @@
   <symbol id="psChevron" viewBox="0 0 100 100">
     <polygon points="40,20 45,20 60,50 35,80 32.5,80 55,50" />
   </symbol>
-  <use href="#psChevron" x="-25%" y="35%" height="30%" opacity=".9" stroke-width="0.05" stroke="black" fill="#4488FF" />
-  <text x="40%" y="50%" font-size="24" font-family="monospace" stroke-width="0.05" stroke="black" fill="#4488FF">
+  <use href="#psChevron" x="-25%" y="35%" height="30%" opacity=".9" fill="#4488FF" stroke-width="0.05" stroke="black" />
+  <text x="40%" y="50%" font-size="24" font-family="monospace" fill="#4488FF" stroke-width="0.05" stroke="black">
     <tspan dx="-8.5em" font-family="sans-serif" font-size="4" dominant-baseline="middle">@</tspan>
     <tspan text-anchor="left" font-family="monospace" dx="-.4em" dominant-baseline="middle" dy="0em">eventful</tspan>
   </text>
