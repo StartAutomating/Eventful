@@ -20,12 +20,12 @@
     [OutputType([Nullable],[Management.Automation.PSEventArgs])]
     param(
     # The SourceIdentifier
-    [Parameter(Mandatory,Position=0)]
+    [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName)]
     [string[]]
     $SourceIdentifier,
 
     # The message data
-    [Parameter(ValueFromPipeline,Position=1)]
+    [Parameter(ValueFromPipeline,Position=1,ValueFromPipelineByPropertyName)]
     [PSObject]
     $MessageData,
 
@@ -36,9 +36,9 @@
 
     # The event arguments.
     [Parameter(ValueFromPipelineByPropertyName,Position=3)]
-    [Alias('SourceEventArgs')]
+    [Alias('SourceEventArgs','EventArgs')]
     [PSObject]
-    $EventArgs,
+    $EventArguments,
 
     # If set, will output the created event.
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -53,6 +53,7 @@
     }
     process {
         #region Map New-Event Parameters
+        $myParameters = @{} + $PSBoundParameters
         $newEventParams = @{} + $PSBoundParameters # Copy bound parameters.
         foreach ($k in @($newEventParams.Keys)) {
             if (-not $newEvent.Parameters[$k]) {   # If a parameter isn't for New-Event
