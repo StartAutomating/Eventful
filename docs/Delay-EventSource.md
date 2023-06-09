@@ -1,5 +1,5 @@
-@Delay.ps1
-----------
+EventSources/@Delay.ps1
+-----------------------
 
 
 
@@ -55,5 +55,5 @@ The amount of time to wait
 
 ### Syntax
 ```PowerShell
-@Delay.ps1 [-Wait] <TimeSpan> [<CommonParameters>]
+EventSources/@Delay.ps1 [-Wait] <TimeSpan> [<CommonParameters>]
 ```
