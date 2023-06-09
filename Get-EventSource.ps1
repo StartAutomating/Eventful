@@ -46,8 +46,7 @@
     )
     begin {
         #region Discover Event Sources
-        $atFunctions = $ExecutionContext.SessionState.InvokeCommand.GetCommands('@*', 'Function',$true)|
-            Where-Object { $_.Value -is [ScriptBlock] }
+        $atFunctions = $ExecutionContext.SessionState.InvokeCommand.GetCommands('@*', 'Function',$true) -match '^@\w'
 
         # Save a pointer to the method for terseness and speed.
         $getCmd    = $ExecutionContext.SessionState.InvokeCommand.GetCommand
@@ -66,12 +65,11 @@
 
         $atScripts = $lookInDirectory |
             Get-Item |
-            Get-ChildItem -Filter '@*.ps1' |
+            Get-ChildItem -Filter '@*.ps1' -Recurse |
             & { process {
+                if ($_.Name -notmatch '^\@\w') { return }
                 $getCmd.Invoke($_.Fullname,'ExternalScript')
             } }
-
-
 
         # If we had a module, and we still don't have a match, we'll look for extensions.
 

@@ -125,7 +125,10 @@
                     $atFile = "@$($invocationName).ps1"
                     # This could be in a few places: the current directory first,
                     foreach ($foundFile in ($pwd, $myRoot | 
-                        Get-ChildItem -Recurse -Filter $atFile)) {
+                        Get-ChildItem -Recurse |
+                        & { process {
+                            if ($_.Name -eq $atFile) { $_ }
+                        } })) {
                             
                         $foundCmd = $getCmd.Invoke($foundFile.FullName, 'ExternalScript')
                         if ($foundCmd) { return $foundCmd}
