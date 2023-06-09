@@ -1,10 +1,17 @@
-
 EventSources/@ModuleChanged.ps1
 -------------------------------
+
+
+
+
 ### Synopsis
 Watches for Module loads and unloads.
 
+
+
 ---
+
+
 ### Description
 
 Polls the current set of globally imported PowerShell modules.
@@ -16,7 +23,11 @@ PowerShell.Module.Unloaded will be sent when one or more modules is unloaded
 
 Only one event if each will be sent per polling interval.
 
+
+
 ---
+
+
 ### Parameters
 #### **PollingInterval**
 
@@ -24,23 +35,21 @@ The frequency to check for a module load.
 
 
 
-> **Type**: ```[TimeSpan]```
 
-> **Required**: false
 
-> **Position**: 1
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[TimeSpan]`|false   |1       |false        |
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 EventSources/@ModuleChanged.ps1 [[-PollingInterval] <TimeSpan>] [<CommonParameters>]
 ```
----
-
-
-
-
