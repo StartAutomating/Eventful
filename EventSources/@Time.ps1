@@ -8,6 +8,7 @@
 #>
 [Diagnostics.Tracing.EventSource(Name='Elapsed')]
 param(
+# The specific date and time the event will be triggered.
 [Parameter(Mandatory,Position=0,ParameterSetName='SpecificTime')]
 [DateTime]
 $DateTime
@@ -24,5 +25,6 @@ process {
 
     if (-not $timer) { return }
     $timer.Start()
-    return $timer
+    $timer |
+        Add-Member NoteProperty MaxTriggerCount 1 -PassThru    
 }
