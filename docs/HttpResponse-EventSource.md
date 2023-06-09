@@ -1,10 +1,17 @@
-
 EventSources/@HttpResponse.ps1
 ------------------------------
+
+
+
+
 ### Synopsis
 Sends events on HTTP Responses.
 
+
+
 ---
+
+
 ### Description
 
 Sends HTTP requests and signals on Responses
@@ -14,7 +21,11 @@ Event MessageData will contain the response, with two additional properties:
 * .ResponseBytes
 * .ResponseContent
 
+
+
 ---
+
+
 ### Parameters
 #### **Uri**
 
@@ -22,17 +33,15 @@ The Uniform Resource Identifier.
 
 
 
-> **Type**: ```[Uri]```
-
-> **Required**: true
-
-> **Position**: 1
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
+|Type   |Required|Position|PipelineInput        |Aliases|
+|-------|--------|--------|---------------------|-------|
+|`[Uri]`|true    |1       |true (ByPropertyName)|Url    |
+
+
+
 #### **Method**
 
 The HTTP Method
@@ -53,51 +62,45 @@ Valid Values:
 
 
 
-> **Type**: ```[String]```
-
-> **Required**: false
-
-> **Position**: 2
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[String]`|false   |2       |true (ByPropertyName)|
+
+
+
 #### **Header**
 
 A collection of headers to send with the request.
 
 
 
-> **Type**: ```[IDictionary]```
-
-> **Required**: false
-
-> **Position**: 3
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
+|Type           |Required|Position|PipelineInput        |Aliases|
+|---------------|--------|--------|---------------------|-------|
+|`[IDictionary]`|false   |3       |true (ByPropertyName)|Headers|
+
+
+
 #### **Body**
 
 The request body.
 
 
 
-> **Type**: ```[PSObject]```
-
-> **Required**: false
-
-> **Position**: 4
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |4       |true (ByPropertyName)|
+
+
+
 #### **PollingInterval**
 
 The polling interval.  
@@ -105,36 +108,32 @@ This is the minimum amount of time until you will be notified of the success or 
 
 
 
-> **Type**: ```[TimeSpan]```
-
-> **Required**: false
-
-> **Position**: 4
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[TimeSpan]`|false   |4       |true (ByPropertyName)|
+
+
+
 #### **TransferEncoding**
 
-> **Type**: ```[Encoding]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type        |Required|Position|PipelineInput|
+|------------|--------|--------|-------------|
+|`[Encoding]`|false   |named   |false        |
+
+
 
 
 
 ---
+
+
 ### Syntax
 ```PowerShell
 EventSources/@HttpResponse.ps1 [-Uri] <Uri> [[-Method] <String>] [[-Header] <IDictionary>] [[-Body] <PSObject>] [[-PollingInterval] <TimeSpan>] [-TransferEncoding <Encoding>] [<CommonParameters>]
 ```
----
-
-
-
-
