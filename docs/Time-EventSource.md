@@ -1,5 +1,5 @@
-@Time.ps1
----------
+EventSources/@Time.ps1
+----------------------
 
 
 
@@ -35,6 +35,10 @@ On Time "5:00 PM" { "EOD!" | Out-Host }
 ### Parameters
 #### **DateTime**
 
+The specific date and time the event will be triggered.
+
+
+
 
 
 
@@ -51,5 +55,5 @@ On Time "5:00 PM" { "EOD!" | Out-Host }
 
 ### Syntax
 ```PowerShell
-@Time.ps1 [-DateTime] <DateTime> [<CommonParameters>]
+EventSources/@Time.ps1 [-DateTime] <DateTime> [<CommonParameters>]
 ```
