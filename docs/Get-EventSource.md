@@ -1,10 +1,17 @@
-
 Get-EventSource
 ---------------
+
+
+
+
 ### Synopsis
 Gets Event Sources
 
+
+
 ---
+
+
 ### Description
 
 Gets Event Sources.
@@ -16,13 +23,21 @@ Event sources can be implemented in:
 * An in-memory scriptblock variable starting with @
 * A module command referenced within a PrivateData.OnQ section of the module manifest.
 
+
+
 ---
+
+
 ### Related Links
 * [Watch-Event](Watch-Event.md)
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -34,7 +49,11 @@ Get-EventSource
 Get-EventSource -Subscription
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **Name**
 
@@ -42,68 +61,65 @@ The name of the event source.
 
 
 
-> **Type**: ```[String[]]```
-
-> **Required**: false
-
-> **Position**: 1
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[String[]]`|false   |1       |true (ByPropertyName)|
+
+
+
 #### **Subscription**
 
 If set, will get subscriptions related to event sources.
 
 
 
-> **Type**: ```[Switch]```
-
-> **Required**: false
-
-> **Position**: named
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[Switch]`|false   |named   |true (ByPropertyName)|
+
+
+
 #### **SourceObject**
 
 If set, will get source objects from the subscriptions related to event sources.
 
 
 
-> **Type**: ```[Switch]```
-
-> **Required**: false
-
-> **Position**: named
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[Switch]`|false   |named   |true (ByPropertyName)|
+
+
+
 #### **Help**
 
 If set, will get full help for each event source.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:true (ByPropertyName)
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[Switch]`|false   |named   |true (ByPropertyName)|
+
+
 
 
 
 ---
+
+
 ### Outputs
 * Eventful.EventSource
 
@@ -119,11 +135,12 @@ If set, will get full help for each event source.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Get-EventSource [[-Name] <String[]>] [-Subscription] [-SourceObject] [-Help] [<CommonParameters>]
 ```
----
-
-
