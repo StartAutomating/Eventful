@@ -1,5 +1,5 @@
-@FileChange.ps1
----------------
+EventSources/@FileChange.ps1
+----------------------------
 
 
 
@@ -130,5 +130,5 @@ Valid Values:
 
 ### Syntax
 ```PowerShell
-@FileChange.ps1 [[-FilePath] <String>] [[-FileFilter] <String>] [[-NotifyFilter] {FileName | DirectoryName | Attributes | Size | LastWrite | LastAccess | CreationTime | Security}] [-Recurse] [[-EventName] <String[]>] [<CommonParameters>]
+EventSources/@FileChange.ps1 [[-FilePath] <String>] [[-FileFilter] <String>] [[-NotifyFilter] {FileName | DirectoryName | Attributes | Size | LastWrite | LastAccess | CreationTime | Security}] [-Recurse] [[-EventName] <String[]>] [<CommonParameters>]
 ```
