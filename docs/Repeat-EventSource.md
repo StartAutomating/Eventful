@@ -1,5 +1,5 @@
-@Repeat.ps1
------------
+EventSources/@Repeat.ps1
+------------------------
 
 
 
@@ -55,5 +55,5 @@ The amount of time to wait between sending events.
 
 ### Syntax
 ```PowerShell
-@Repeat.ps1 [-Interval] <TimeSpan> [<CommonParameters>]
+EventSources/@Repeat.ps1 [-Interval] <TimeSpan> [<CommonParameters>]
 ```
