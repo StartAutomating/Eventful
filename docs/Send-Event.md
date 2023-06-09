@@ -1,10 +1,17 @@
-
 Send-Event
 ----------
+
+
+
+
 ### Synopsis
 Sends Events
 
+
+
 ---
+
+
 ### Description
 
 Sends Events to PowerShell.
@@ -14,7 +21,11 @@ Send-Event is a wrapper for the built-in command New-Event with a few key differ
 2. You can send multiple sourceidentifiers
 3. It does not output by default (you must pass -PassThru)
 
+
+
 ---
+
+
 ### Related Links
 * [New-Event](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/New-Event)
 
@@ -24,14 +35,22 @@ Send-Event is a wrapper for the built-in command New-Event with a few key differ
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
 1..4 | Send-Event "Hit It"
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **SourceIdentifier**
 
@@ -39,85 +58,80 @@ The SourceIdentifier
 
 
 
-> **Type**: ```[String[]]```
-
-> **Required**: true
-
-> **Position**: 1
-
-> **PipelineInput**:false
 
 
 
----
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[String[]]`|true    |1       |true (ByPropertyName)|
+
+
+
 #### **MessageData**
 
 The message data
 
 
 
-> **Type**: ```[PSObject]```
-
-> **Required**: false
-
-> **Position**: 2
-
-> **PipelineInput**:true (ByValue)
 
 
 
----
+|Type        |Required|Position|PipelineInput                 |
+|------------|--------|--------|------------------------------|
+|`[PSObject]`|false   |2       |true (ByValue, ByPropertyName)|
+
+
+
 #### **Sender**
 
 The sender.
 
 
 
-> **Type**: ```[PSObject]```
-
-> **Required**: false
-
-> **Position**: 3
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
-#### **EventArgs**
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[PSObject]`|false   |3       |true (ByPropertyName)|
+
+
+
+#### **EventArguments**
 
 The event arguments.
 
 
 
-> **Type**: ```[PSObject]```
-
-> **Required**: false
-
-> **Position**: 4
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
+|Type        |Required|Position|PipelineInput        |Aliases                      |
+|------------|--------|--------|---------------------|-----------------------------|
+|`[PSObject]`|false   |4       |true (ByPropertyName)|SourceEventArgs<br/>EventArgs|
+
+
+
 #### **PassThru**
 
 If set, will output the created event.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:true (ByPropertyName)
+|Type      |Required|Position|PipelineInput        |
+|----------|--------|--------|---------------------|
+|`[Switch]`|false   |named   |true (ByPropertyName)|
+
+
 
 
 
 ---
+
+
 ### Outputs
 * [Nullable](https://learn.microsoft.com/en-us/dotnet/api/System.Nullable)
 
@@ -127,11 +141,12 @@ If set, will output the created event.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
-Send-Event [-SourceIdentifier] <String[]> [[-MessageData] <PSObject>] [[-Sender] <PSObject>] [[-EventArgs] <PSObject>] [-PassThru] [<CommonParameters>]
+Send-Event [-SourceIdentifier] <String[]> [[-MessageData] <PSObject>] [[-Sender] <PSObject>] [[-EventArguments] <PSObject>] [-PassThru] [<CommonParameters>]
 ```
----
-
-
