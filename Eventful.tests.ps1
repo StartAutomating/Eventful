@@ -85,7 +85,7 @@ describe Eventful {
     }
 
     it 'Can receive results from event subscriptions' {
-        on delay "00:00:00.1" -Then {1} # Signal in a tenth of a second.
+        on interval "00:00:00.1" -Then {1} # Signal every tenth of a second.
         Start-Sleep -Milliseconds 250
         $receivedResults = @(Get-EventSource -Name Delay -Subscription | Receive-Event)
         $receivedResults.Length | Should -BeGreaterOrEqual 1
