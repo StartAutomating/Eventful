@@ -55,13 +55,13 @@ describe Eventful {
     }
     it 'Can get a signal when a job finishes' {
         $global:JobsIsDone = $false
-        $j = Start-Job -ScriptBlock { Start-Sleep -Milliseconds 500; "done" }
+        $j = Start-Job -ScriptBlock { Start-Sleep -Milliseconds 750; "done" }
 
         $j|
             On@Job -Then { $global:JobsIsDone = $true }
 
         do  {
-            Start-Sleep -Milliseconds 750
+            Start-Sleep -Milliseconds 1000
         } while ($j.JobStateInfo.State -ne 'Completed')
 
         Start-Sleep -Milliseconds 250
