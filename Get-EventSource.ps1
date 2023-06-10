@@ -78,16 +78,17 @@
         if ($loadedModules -notcontains $myInv.MyCommand.Module) {
             $loadedModules = @($myInv.MyCommand.Module) + $loadedModules
         }
+        $myModuleName = $myInv.MyCommand.Module.Name
         $extendedCommands =
 
             foreach ($loadedModule in $loadedModules) { # Walk over all modules.
                 if ( # If the module has PrivateData keyed to this module
-                    $loadedModule.PrivateData.($myInv.MyCommand.Module.Name)
+                    $loadedModule.PrivateData.$myModuleName
                 ) {
                     # Determine the root of the module with private data.
                     $thisModuleRoot = [IO.Path]::GetDirectoryName($loadedModule.Path)
                     # and get the extension data
-                    $extensionData = $loadedModule.PrivateData.($myInv.MyCommand.Module.Name)
+                    $extensionData = $loadedModule.PrivateData.$myModuleName
                     if ($extensionData -is [Hashtable]) { # If it was a hashtable
                         foreach ($ed in $extensionData.GetEnumerator()) { # walk each key
 
@@ -103,6 +104,13 @@
                             if ($extensionCmd) { # If we've found a valid extension command
                                 $extensionCmd    # return it.
                             }
+                        }
+                    }
+                }
+                elseif ($loadedModule.Tags -contains $myModuleName) {
+                    foreach ($matchingFile in @(Get-ChildItem (Split-Path $loadedModule.Path) -Recurse) -match '\@\w' -match '\.ps1$') {
+                        if ($matchingFile.Name -match '^\@\w' ) {
+                            $getCmd.Invoke($matchingFile.FullName, 'ExternalScript')
                         }
                     }
                 }
