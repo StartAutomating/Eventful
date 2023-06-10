@@ -83,7 +83,8 @@ process {
     $psAsync |
         Add-Member NoteProperty SourceIdentifier @(
             "PowerShell.Async.$($psAsync.InstanceID)","PowerShell.Async.Failed.$($psAsync.InstanceID)"
-        ) -Force -PassThru 
+        ) -Force -PassThru |
+        Add-Member MaxTriggerCount 1 -Force -PassThru
     
     return
 }

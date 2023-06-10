@@ -1,4 +1,4 @@
-﻿<#
+<#
 .Synopsis
     Watches a process.
 .Description
@@ -48,7 +48,7 @@ process {
             Add-Member EventName $eventNames -Force -PassThru
     } else {
         Get-Process -Id $ProcessID |
-            Add-Member EventName "Exited" -Force -PassThru
+            Add-Member EventName "Exited" -Force -PassThru |
+            Add-Member MaxTriggerCount 1 -Force -PassThru
     }
-
 }

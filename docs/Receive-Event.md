@@ -1,15 +1,26 @@
-
 Receive-Event
 -------------
+
+
+
+
 ### Synopsis
 Receives Events
 
+
+
 ---
+
+
 ### Description
 
 Receives Events and output from Event Subscriptions.
 
+
+
 ---
+
+
 ### Related Links
 * [Send-Event](Send-Event.md)
 
@@ -19,7 +30,11 @@ Receives Events and output from Event Subscriptions.
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -31,7 +46,11 @@ Get-EventSource -Subscriber | Receive-Event
 Receive-Event -SourceIdentifier * -First 1 # Receives the most recent event with any source identifier.
 ```
 
+
+
 ---
+
+
 ### Parameters
 #### **SubscriptionID**
 
@@ -39,85 +58,75 @@ The event subscription ID.
 
 
 
-> **Type**: ```[Int32[]]```
-
-> **Required**: true
-
-> **Position**: named
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
+|Type       |Required|Position|PipelineInput        |
+|-----------|--------|--------|---------------------|
+|`[Int32[]]`|true    |named   |true (ByPropertyName)|
+
+
+
 #### **EventIdentifier**
 
 The event ID.
 
 
 
-> **Type**: ```[Int32[]]```
-
-> **Required**: true
-
-> **Position**: named
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
+|Type       |Required|Position|PipelineInput        |
+|-----------|--------|--------|---------------------|
+|`[Int32[]]`|true    |named   |true (ByPropertyName)|
+
+
+
 #### **SourceIdentifier**
 
 The event source identifier.
 
 
 
-> **Type**: ```[String[]]```
-
-> **Required**: false
-
-> **Position**: named
-
-> **PipelineInput**:true (ByPropertyName)
 
 
 
----
+|Type        |Required|Position|PipelineInput        |
+|------------|--------|--------|---------------------|
+|`[String[]]`|false   |named   |true (ByPropertyName)|
+
+
+
 #### **First**
 
 If provided, will return the first N events
 
 
 
-> **Type**: ```[Int32]```
-
-> **Required**: false
-
-> **Position**: named
-
-> **PipelineInput**:false
 
 
 
----
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |named   |false        |
+
+
+
 #### **Skip**
 
 If provided, will skip the first N events.
 
 
 
-> **Type**: ```[Int32]```
-
-> **Required**: false
-
-> **Position**: named
-
-> **PipelineInput**:false
 
 
 
----
+|Type     |Required|Position|PipelineInput|
+|---------|--------|--------|-------------|
+|`[Int32]`|false   |named   |false        |
+
+
+
 #### **InputObject**
 
 The input object.
@@ -125,17 +134,15 @@ If the Input Object was a job, it will receive the results of the job.
 
 
 
-> **Type**: ```[PSObject]```
-
-> **Required**: false
-
-> **Position**: named
-
-> **PipelineInput**:true (ByValue)
 
 
 
----
+|Type        |Required|Position|PipelineInput |
+|------------|--------|--------|--------------|
+|`[PSObject]`|false   |named   |true (ByValue)|
+
+
+
 #### **Clear**
 
 If set, will remove events from the system after they have been returned,
@@ -143,17 +150,20 @@ and will not keep results from Jobs or Event Handlers.
 
 
 
-> **Type**: ```[Switch]```
 
-> **Required**: false
 
-> **Position**: named
 
-> **PipelineInput**:false
+|Type      |Required|Position|PipelineInput|
+|----------|--------|--------|-------------|
+|`[Switch]`|false   |named   |false        |
+
+
 
 
 
 ---
+
+
 ### Outputs
 * [Management.Automation.PSObject](https://learn.microsoft.com/en-us/dotnet/api/System.Management.Automation.PSObject)
 
@@ -163,7 +173,11 @@ and will not keep results from Jobs or Event Handlers.
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Receive-Event [-First <Int32>] [-Skip <Int32>] [-InputObject <PSObject>] [-Clear] [<CommonParameters>]
@@ -177,6 +191,3 @@ Receive-Event -EventIdentifier <Int32[]> [-SourceIdentifier <String[]>] [-First 
 ```PowerShell
 Receive-Event -SourceIdentifier <String[]> [-First <Int32>] [-Skip <Int32>] [-InputObject <PSObject>] [-Clear] [<CommonParameters>]
 ```
----
-
-

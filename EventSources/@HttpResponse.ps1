@@ -58,7 +58,7 @@ $TransferEncoding = $([Text.Encoding]::UTF8)
 
 process {
     # Clear the event subscriber if one exists.
-    $eventSubscriber = Get-EventSubscriber -SourceIdentifier "@HttpResponse_Check" -ErrorAction SilentlyContinue
+    $eventSubscriber = Get-EventSubscriber -SourceIdentifier "@HttpResponse_Check" -ErrorAction Ignore
     if ($eventSubscriber) {$eventSubscriber | Unregister-Event}
 
     # Create a new subscriber for the request.
@@ -66,6 +66,7 @@ process {
         Interval  = $PollingInterval.TotalMilliseconds # Every pollinginterval,
         AutoReset = $true
     }
+    
     $HttpResponseChecker = 
         Register-ObjectEvent -InputObject $httpResponseCheckTimer -EventName Elapsed -Action {
             $toCallEnd = # check to see if any requests have completed.

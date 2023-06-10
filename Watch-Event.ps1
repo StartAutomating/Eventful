@@ -117,7 +117,6 @@
                         } else {
                             return $atFunction
                         }
-
                     }
 
 
@@ -125,7 +124,10 @@
                     $atFile = "@$($invocationName).ps1"
                     # This could be in a few places: the current directory first,
                     foreach ($foundFile in ($pwd, $myRoot | 
-                        Get-ChildItem -Recurse -Filter $atFile)) {
+                        Get-ChildItem -Recurse |
+                        & { process {
+                            if ($_.Name -eq $atFile) { $_ }
+                        } })) {
                             
                         $foundCmd = $getCmd.Invoke($foundFile.FullName, 'ExternalScript')
                         if ($foundCmd) { return $foundCmd}
@@ -168,6 +170,13 @@
                                                 return $extensionCmd
                                             }
                                         }
+                                    }
+                                }
+                            }
+                            elseif ($loadedModule.Tags -contains $myModuleName) {                                
+                                foreach ($matchingFile in @(Get-ChildItem (Split-Path $loadedModule.Path) -Recurse) -match '\@\w' -match '\.ps1$') {
+                                    if ($matchingFile.Name -eq $atFile) {
+                                        return $getCmd.Invoke($matchingFile.FullName, 'ExternalScript')
                                     }
                                 }
                             }
@@ -235,13 +244,16 @@
         #endregion Find the Event Source and Map Dynamic Parameters
 
 
-        #region Add Common Parameters
+        
 
+        #region Optionally Add Source Identifier
         # If we don't have an Event Source at this point and we haven't already,
         if (-not $eventSource -and -not $SourceIDParameterCreated) { # add the SourceIdentifier parameter.
             . $addSourceIdParameter
         }
+        #endregion Optionally Add Source Identifier
 
+        #region Optionally Add InputObject Parameter
         # Also, if we don't have an event source
         if (-not $eventSource) {
             # then we can add an InputObject parameter.
@@ -254,27 +266,47 @@
                 )
 
         }
+        #endregion Optionally Add InputObject Parameter
 
-        # All calls will always have two additional parameters:
-        $maxPosition++
+        #region Add Common Parameters
+        # All calls will always have two additional parameters:        
         $thenParam = [Management.Automation.ParameterAttribute]::new()
         $thenParam.Mandatory = $false #* [ScriptBlock]$then
-        $thenParam.Position = $maxPosition
+        $thenParam.Position = ++$maxPosition
         $thenActionAlias = [Management.Automation.AliasAttribute]::new("Action")
         $DynamicParameters.Add("Then",
                         [Management.Automation.RuntimeDefinedParameter]::new(
                             "Then", [ScriptBlock], @($thenParam, $thenActionAlias)
                         )
                     )
-        $maxPosition++
+        
         $WhenParam = [Management.Automation.ParameterAttribute]::new()
-        $whenParam.Position = $maxPosition #* [ScriptBlock]$then
+        $whenParam.Position = ++$maxPosition #* [ScriptBlock]$when
         $DynamicParameters.Add("When",
                         [Management.Automation.RuntimeDefinedParameter]::new(
                             "When", [ScriptBlock], $WhenParam
                         )
                     )
-
+        
+        $MessageDataParam = [Management.Automation.ParameterAttribute]::new()
+        $MessageDataParam.Position = ++$maxPosition #* [ScriptBlock]$when
+        $DynamicParameters.Add("MessageData",
+                        [Management.Automation.RuntimeDefinedParameter]::new(
+                            "MessageData", [PSObject], $MessageDataParam
+                        )
+                    )
+        
+        $maxTriggerParam = [Management.Automation.ParameterAttribute]::new()
+        $maxTriggerParam.Position = ++$maxPosition #* [int]$MaxTriggerCount
+        $DynamicParameters.Add("MaxTriggerCount",
+            [Management.Automation.RuntimeDefinedParameter]::new(
+                "MaxTriggerCount", [int], @(
+                    $maxTriggerParam,
+                    [Management.Automation.AliasAttribute]::new("Max"),
+                    [Management.Automation.AliasAttribute]::new("Count")
+                )
+            )
+        )
         #endregion Add Common Parameters
 
 
@@ -304,12 +336,20 @@ $($parameterCopy | Out-String)
         #region Run Event Source and Map Parameters
         if ($eventSource) { # If we have an Event Source, now's the time to run it.
             $eventSourceParameter = [Ordered]@{} + $PSBoundParameters # Copy whatever parameters we have
-            $eventSourceParameter.Remove('Then') # and remove -Then,
-            $eventSourceParameter.Remove('When') # -When,
-            $eventSourceParameter.Remove('SourceIdentifier') # and -SourceIdentifier.
+            foreach ($toRemove in 'Then','When','SourceIdentifier','MessageData','MaxTriggerCount') {
+                $eventSourceParameter.Remove($toRemove)
+            }            
             $eventSourceOutput = & $eventSource @eventSourceParameter # Then run the generator.
             $null = $PSBoundParameters.Remove('SourceIdentifier')
 
+            if ($eventSourceOutput.MessageData) {
+                $registerParams['MessageData'] = $eventSourceOutput.MessageData
+            }
+            $eventSourceMaxTriggerCount = $eventSourceOutput.MaxTriggerCount,$eventSourceOutput.Max,$eventSourceOutput.TriggerCount -as [int[]] -gt 0
+            
+            if ($eventSourceMaxTriggerCount) {
+                $registerParams['MaxTriggerCount'] = $eventSourceMaxTriggerCount[0]
+            }
 
             if (-not $eventSourceOutput) { # If it didn't output,
                 # we're gonna assume it it's gonna by signal by name.
@@ -394,7 +434,7 @@ $($parameterCopy | Out-String)
 
         if ($When) { # If -When was provided
             if ($when -is [ScriptBlock]) { # and it was a script
-                # Rewrite -Then to include -When.
+                # Rewrite -Then to include -When (this prevents debugging).
                 # Run -When in a subexpression so it can return from the event handler (not itself)
                 $then = [ScriptBlock]::Create(@"
 `$shouldHandle = `$(
@@ -410,6 +450,16 @@ $then
             $registerParams["Action"] = $Then # this maps to the -Action parameter the Register- comamnd.
         }
         #endregion Handle When and Then
+
+        #region Handle MaxTriggerCount and MessageData
+        if ($parameterCopy['MaxTriggerCount']) {
+            $registerParams['MaxTriggerCount'] = $parameterCopy['MaxTriggerCount']
+        }
+
+        if ($parameterCopy['MessageData']) {
+            $registerParams['MessageData'] = $parameterCopy['MessageData']
+        }
+        #endregion
 
         #region Subscribe to Event
 

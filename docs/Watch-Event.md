@@ -1,15 +1,26 @@
-
 Watch-Event
 -----------
+
+
+
+
 ### Synopsis
 Watches Events
 
+
+
 ---
+
+
 ### Description
 
 Watches Events by SourceIdentifier, or using an EventSource script.
 
+
+
 ---
+
+
 ### Related Links
 * [Get-EventSource](Get-EventSource.md)
 
@@ -31,7 +42,11 @@ Watches Events by SourceIdentifier, or using an EventSource script.
 
 
 
+
+
 ---
+
+
 ### Examples
 #### EXAMPLE 1
 ```PowerShell
@@ -43,7 +58,11 @@ Watch-Event -SourceIdentifier MySignal -Then {"fire!" | Out-Host }
 On MySignal { "fire!" | Out-host }
 ```
 New-Event MySignal
+
+
 ---
+
+
 ### Outputs
 * [Nullable](https://learn.microsoft.com/en-us/dotnet/api/System.Nullable)
 
@@ -53,11 +72,12 @@ New-Event MySignal
 
 
 
+
+
 ---
+
+
 ### Syntax
 ```PowerShell
 Watch-Event [<CommonParameters>]
 ```
----
-
-

@@ -19,7 +19,7 @@ Event sources can be found a few places:
 * In any function whose name starts with @
 * In the directory where Watch-Event is defined
 * In the module root where Watch-Event is defined
-* In an .OnQ [Hashtable] within a module manifest's private data
+* In an .Eventful [Hashtable] within a module manifest's private data
 
 You can see the event sources currently available with:
 

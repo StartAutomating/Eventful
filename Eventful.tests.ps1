@@ -55,13 +55,13 @@ describe Eventful {
     }
     it 'Can get a signal when a job finishes' {
         $global:JobsIsDone = $false
-        $j = Start-Job -ScriptBlock { Start-Sleep -Milliseconds 500; "done" }
+        $j = Start-Job -ScriptBlock { Start-Sleep -Milliseconds 750; "done" }
 
         $j|
             On@Job -Then { $global:JobsIsDone = $true }
 
         do  {
-            Start-Sleep -Milliseconds 750
+            Start-Sleep -Milliseconds 1000
         } while ($j.JobStateInfo.State -ne 'Completed')
 
         Start-Sleep -Milliseconds 250
@@ -85,9 +85,9 @@ describe Eventful {
     }
 
     it 'Can receive results from event subscriptions' {
-        on delay "00:00:00.1" -Then {1} # Signal in a tenth of a second.
+        on@repeat -interval "00:00:00.1" -Then {1} # Signal every tenth of a second.
         Start-Sleep -Milliseconds 250
-        $receivedResults = @(Get-EventSource -Name Delay -Subscription | Receive-Event)
+        $receivedResults = @(Get-EventSource -Name Repeat -Subscription | Receive-Event)
         $receivedResults.Length | Should -BeGreaterOrEqual 1
     }
 

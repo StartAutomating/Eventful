@@ -46,8 +46,7 @@
     )
     begin {
         #region Discover Event Sources
-        $atFunctions = $ExecutionContext.SessionState.InvokeCommand.GetCommands('@*', 'Function',$true)|
-            Where-Object { $_.Value -is [ScriptBlock] }
+        $atFunctions = $ExecutionContext.SessionState.InvokeCommand.GetCommands('@*', 'Function',$true) -match '^@\w'
 
         # Save a pointer to the method for terseness and speed.
         $getCmd    = $ExecutionContext.SessionState.InvokeCommand.GetCommand
@@ -66,12 +65,11 @@
 
         $atScripts = $lookInDirectory |
             Get-Item |
-            Get-ChildItem -Filter '@*.ps1' |
+            Get-ChildItem -Filter '@*.ps1' -Recurse |
             & { process {
+                if ($_.Name -notmatch '^\@\w') { return }
                 $getCmd.Invoke($_.Fullname,'ExternalScript')
             } }
-
-
 
         # If we had a module, and we still don't have a match, we'll look for extensions.
 
@@ -80,16 +78,17 @@
         if ($loadedModules -notcontains $myInv.MyCommand.Module) {
             $loadedModules = @($myInv.MyCommand.Module) + $loadedModules
         }
+        $myModuleName = $myInv.MyCommand.Module.Name
         $extendedCommands =
 
             foreach ($loadedModule in $loadedModules) { # Walk over all modules.
                 if ( # If the module has PrivateData keyed to this module
-                    $loadedModule.PrivateData.($myInv.MyCommand.Module.Name)
+                    $loadedModule.PrivateData.$myModuleName
                 ) {
                     # Determine the root of the module with private data.
                     $thisModuleRoot = [IO.Path]::GetDirectoryName($loadedModule.Path)
                     # and get the extension data
-                    $extensionData = $loadedModule.PrivateData.($myInv.MyCommand.Module.Name)
+                    $extensionData = $loadedModule.PrivateData.$myModuleName
                     if ($extensionData -is [Hashtable]) { # If it was a hashtable
                         foreach ($ed in $extensionData.GetEnumerator()) { # walk each key
 
@@ -105,6 +104,13 @@
                             if ($extensionCmd) { # If we've found a valid extension command
                                 $extensionCmd    # return it.
                             }
+                        }
+                    }
+                }
+                elseif ($loadedModule.Tags -contains $myModuleName) {
+                    foreach ($matchingFile in @(Get-ChildItem (Split-Path $loadedModule.Path) -Recurse) -match '\@\w' -match '\.ps1$') {
+                        if ($matchingFile.Name -match '^\@\w' ) {
+                            $getCmd.Invoke($matchingFile.FullName, 'ExternalScript')
                         }
                     }
                 }
