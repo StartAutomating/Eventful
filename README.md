@@ -2,13 +2,13 @@
 <img src='Assets/Eventful.svg' />
 </div>
 
-Easy Eventful Asynchronous Scripting with PowerShell
+Easy Eventful PowerShell
 ----------------
 
 ### Getting Started with Eventful
 
 
-Eventful is a PowerShell module that helps you use events to script asynchronously.
+Eventful is a PowerShell module that helps you script asynchronously.
 
 It gives you an easy syntax to describe events handlers in PowerShell, and provides a platform to build custom event sources.
 
