@@ -117,7 +117,6 @@
                         } else {
                             return $atFunction
                         }
-
                     }
 
 
@@ -171,6 +170,13 @@
                                                 return $extensionCmd
                                             }
                                         }
+                                    }
+                                }
+                            }
+                            elseif ($loadedModule.Tags -contains $myModuleName) {                                
+                                foreach ($matchingFile in @(Get-ChildItem (Split-Path $loadedModule.Path) -Recurse) -match '\@\w' -match '\.ps1$') {
+                                    if ($matchingFile.Name -eq $atFile) {
+                                        return $getCmd.Invoke($matchingFile.FullName, 'ExternalScript')
                                     }
                                 }
                             }
